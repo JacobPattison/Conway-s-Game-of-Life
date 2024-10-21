@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Cell : MonoBehaviour
 {
+    private string DebugPath = Application.dataPath + "/Debug.txt";
+
     [SerializeField] private SpriteRenderer SpriteRenderer;
     public bool State;
     public bool ?NextState;
@@ -42,8 +45,10 @@ public class Cell : MonoBehaviour
         else
             NextState = true;
 
-        if (State == false && aliveCount == 3)
+        if (aliveCount == 3)
             NextState = true;
+
+
     }
 
     private int GetNeighobourAliveCount ()

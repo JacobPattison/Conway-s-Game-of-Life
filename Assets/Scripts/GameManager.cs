@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private bool IsPlaying = false;
     void Start()
     {
-        StartCoroutine(UpdateStates(1f));
+        StartCoroutine(UpdateStates(3f));
     }
 
-    private bool Playing()
+    private void Playing()
     {
-        // Your condition logic here
-        return Input.GetKeyDown(KeyCode.Space); // Example: wait for the space key to be pressed
+        IsPlaying = Input.GetKeyDown(KeyCode.Space); // Example: wait for the space key to be pressed
     }
 
     IEnumerator UpdateStates(float interval)
     {
-        while (!Playing())
+        while (!IsPlaying)
         {
             Debug.Log("State Updated");
 
